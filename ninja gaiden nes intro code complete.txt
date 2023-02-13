@@ -1,0 +1,859 @@
+import pygame
+import time
+# Initialize Pygame
+pygame.init()
+
+# Set the font file and font size
+font_file = r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\ninja-gaiden-nes.ttf"
+font_size = 36
+
+# Load the font
+font = pygame.font.Font(font_file, font_size)
+
+
+# Set the screen size
+screen = pygame.display.set_mode((1127, 1049))
+
+# Load the background image
+bg_moon = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\bgmoon.png")
+
+# Load the other images
+gt11 = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\gt11.png")
+gt0 = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\gt0.png")
+gt2 = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\gt2.png")
+gt3 = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\gt3.png")
+sp1 = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\sp1.png")
+sp2 = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\sp2.png")
+# Load the music
+pygame.mixer.music.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\[YT2mp3.info] - Ninja Gaiden (NES) - Intro - Enhanced (320kbps).wav")
+pygame.mixer.music.play()
+
+# Load the images for the fade effect
+face_grey = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\face grey.png")
+red = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\red.png")
+
+# Set the scrolling speed for each image
+gt11_speed = .42
+gt2_speed = .2
+gt3_speed = .08
+
+# Set the initial x position for each image
+gt0_x = 0
+gt11_x = -800
+gt2_x = -800
+gt3_x = -800
+
+# Game loop
+running = True
+start_time = pygame.time.get_ticks() / 1000
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Clear the screen
+    screen.fill((255, 255, 255))
+
+    # Display the background image
+    screen.blit(bg_moon, (0, 0))
+
+    # Display the first image
+    gt11_x += gt11_speed
+    screen.blit(gt11, (gt11_x, 772))
+
+    # Display the second image
+    gt2_x += gt2_speed
+    screen.blit(gt2, (gt2_x, 660))
+
+    # Display the third image
+    gt3_x += gt3_speed
+    screen.blit(gt3, (gt3_x, 615))
+
+    # Display the fourth image
+    screen.blit(sp1, (248, 710))
+
+    # Display the fifth image
+    screen.blit(sp2, (804, 620))
+
+    # Display the sith image
+    screen.blit(gt0, (0, 880))
+
+    # Update the screen
+    pygame.display.update()
+
+    # Timer for 5 seconds
+    timer = pygame.time.get_ticks() / 1000
+    if timer > 5.8:
+        # Remove all images
+        images = [gt11, gt2, gt3, sp1, sp2, gt0]
+        for image in images:
+            screen.blit(bg_moon, (0, 0))
+
+        # Load and display the image "face grey.png" for 1 second
+        face_grey = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\face grey.png")
+        screen.blit(face_grey, (0, 0))
+        pygame.display.update()
+        pygame.time.wait(1000)
+
+        # Load and display the image "red.png" for 1 second
+        red = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\red.png")
+        screen.blit(red, (0, 0))
+        pygame.display.update()
+        pygame.time.wait(1000)
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyrunf1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyrunf2.png"
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 2000:
+            for image in images:
+                face_grey = pygame.image.load(image)
+                screen.blit(face_grey, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redrunf1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redrunf2.png"
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 1700:
+            for image in images:
+                redrunf = pygame.image.load(image)
+                screen.blit(redrunf, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyface1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyface2.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyface3.png"
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 1600:
+            for image in images:
+                greyface1 = pygame.image.load(image)
+                screen.blit(greyface1, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redface1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redface2.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redface3.png"
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 1600:
+            for image in images:
+                redface1 = pygame.image.load(image)
+                screen.blit(redface1, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyrunf1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyrunf2.png"
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 800:
+            for image in images:
+                face_grey = pygame.image.load(image)
+                screen.blit(face_grey, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redrunf1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redrunf2.png"
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 800:
+            for image in images:
+                redrunf = pygame.image.load(image)
+                screen.blit(redrunf, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyjump1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyjump2.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greyjump3.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 300:
+            for image in images:
+                greyjump = pygame.image.load(image)
+                screen.blit(greyjump, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\blankgrass1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\blankgrass2.png",
+
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 200:
+            for image in images:
+                blankgrass = pygame.image.load(image)
+                screen.blit(blankgrass, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redjump1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redjump2.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\redjump3.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 300:
+            for image in images:
+                redjump = pygame.image.load(image)
+                screen.blit(redjump, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\blankgrass1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\blankgrass2.png",
+
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                blankgrass = pygame.image.load(image)
+                screen.blit(blankgrass, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash1.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash2.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash3.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash4.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash5.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash6.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash7.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash8.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash9.png",
+
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 200:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(100)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash10.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+]
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 1000:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(50)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash11.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash12.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash13.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash14.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\slash15.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(150)
+            current_time = pygame.time.get_ticks()
+
+
+
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop1.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 3000:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(3000)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop2.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop3.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop4.png",
+
+
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 400:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(150)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop5.png",
+
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 2000:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(2000)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop6.png",
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop7.png",
+        ]
+
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        images = [
+           r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop7.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 2000:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(2000)
+            current_time = pygame.time.get_ticks()
+
+        text_color = (200, 200, 200)
+
+        # create a list to store each line of text
+        text_lines = [
+            "With whom did father",
+            "have a duel and lose?..",
+            "For what reason did he",
+            "fight and die?"
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (800 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # create a clock to control the refresh rate
+        clock = pygame.time.Clock()
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (450 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                clock.tick(50)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(5000)
+
+        # remove the text from the screen
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\greydrop7.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        # create a list to store each line of text
+        text_lines = [
+            "Even I don't know for",
+            "sure."
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (750 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (450 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                time.sleep(0.02)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(6000)
+
+        # Load the image
+        black_screen_image = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\black screen.png")
+
+        # Fade to black effect
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 3000:
+            alpha = int((current_time - start_time) / 3000 * 255)
+            black_screen_image.set_alpha(alpha)
+            screen.blit(black_screen_image, (0, 0))
+            pygame.display.update()
+            pygame.time.wait(10)
+            current_time = pygame.time.get_ticks()
+
+        # Load the image
+        black_screen_image = pygame.image.load(r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\maskoff.png")
+        # Fade to black effect
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 3000:
+            alpha = 255 - int((current_time - start_time) / 3000 * 255)
+            black_screen_image.set_alpha(alpha)
+            screen.blit(black_screen_image, (0, 0))
+            pygame.display.update()
+            pygame.time.wait(10)
+            current_time = pygame.time.get_ticks()
+
+        # create a list to store each line of text
+        text_lines = [
+            "The day after he",
+            "disappeared, in father's",
+            "room I found a letter",
+            "addressed to me."
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (750 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (450 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                time.sleep(0.02)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(2000)
+
+        # remove the text from the screen
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\maskoff.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        # create a list to store each line of text
+        text_lines = [
+            "It said",
+            "Ryu, I am on my way to",
+            "a life or death duel",
+
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (750 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (450 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                time.sleep(0.02)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(2000)
+
+        # remove the text from the screen
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\sword.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        # create a list to store each line of text
+        text_lines = [
+            "If it is destiny that I",
+            "not return, you are to",
+            "take the Dragon sword",
+            "of the Hayabusa family"
+
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (750 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (450 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                time.sleep(0.02)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(2000)
+
+        # remove the text from the screen
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\sword.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+            text_lines = [
+                "and go to America and",
+                "see the archaeologist",
+                "Walter Smith.",
+
+            ]
+
+            # render each line of text and store it in a list
+            text_surfaces = []
+            for line in text_lines:
+                lines = []
+                for char in line:
+                    text = font.render(char, True, text_color)
+                    lines.append(text)
+                text_surfaces.append(lines)
+
+            # calculate the total height of the text
+            text_height = sum(line[0].get_height() for line in text_surfaces)
+
+            # set the starting y-coordinate for the text
+            y = (750 - text_height)
+
+            # set the line spacing
+            line_spacing = 34
+
+            # display each line of text on the screen
+            for lines in text_surfaces:
+                x = (450 - lines[0].get_width()) // 2
+                for text in lines:
+                    screen.blit(text, (x, y))
+                    x += text.get_width()
+                    pygame.display.update()
+                    time.sleep(0.02)
+                y += lines[0].get_height() + line_spacing
+
+            pygame.time.wait(2000)
+
+        # remove the text from the screen
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\maskoff.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        # create a list to store each line of text
+        text_lines = [
+            "Ryu, be always brave...",
+
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (750 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (450 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                time.sleep(0.02)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(2000)
+
+        # remove the text from the screen
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+
+        images = [
+            r"C:\Users\Vorlonz\Desktop\python\sprite\ninja gaiden\revenge.png",
+        ]
+
+        start_time = pygame.time.get_ticks()
+        current_time = start_time
+        while current_time - start_time < 500:
+            for image in images:
+                slash = pygame.image.load(image)
+                screen.blit(slash, (0, 0))
+                pygame.display.update()
+                pygame.time.wait(500)
+            current_time = pygame.time.get_ticks()
+
+        # create a list to store each line of text
+        text_lines = [
+            " 'I will get my revenge!' ",
+
+        ]
+
+        # render each line of text and store it in a list
+        text_surfaces = []
+        for line in text_lines:
+            lines = []
+            for char in line:
+                text = font.render(char, True, text_color)
+                lines.append(text)
+            text_surfaces.append(lines)
+
+        # calculate the total height of the text
+        text_height = sum(line[0].get_height() for line in text_surfaces)
+
+        # set the starting y-coordinate for the text
+        y = (750 - text_height)
+
+        # set the line spacing
+        line_spacing = 34
+
+        # display each line of text on the screen
+        for lines in text_surfaces:
+            x = (250 - lines[0].get_width()) // 2
+            for text in lines:
+                screen.blit(text, (x, y))
+                x += text.get_width()
+                pygame.display.update()
+                time.sleep(0.02)
+            y += lines[0].get_height() + line_spacing
+
+        pygame.time.wait(4000)
+
+        # wait for the user to close the window
+        running = True
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+
+        # quit pygame
+        pygame.quit()
